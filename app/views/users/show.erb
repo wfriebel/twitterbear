@@ -1,2 +1,8 @@
-"On show page"
-<%= @user.user_name %>
+<h1> <%= @user.first_name %> </h1>
+
+<div class="updates">
+<form action='/users/<%= @user.id %>/tweet' method="post">
+	<textarea name="tweet" rows="4" cools="50"></textarea>
+	<input type="submit" value="New Tweet"></input>
+</form>
+</div>
