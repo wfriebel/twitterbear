@@ -1,13 +1,36 @@
-
 require 'faker'
 
-Article.delete_all
-Category.delete_all
+#Destroy all existing users and tweets
+users = User.all
+users.each {|user| user.destroy}
 
-500.times do
-  User.create(:first_name => Faker::Name.first_name, :last_name => Faker::Name.last_name, :user_name => Faker::Internet.user_name, :email => Faker::Internet.email, :password_hash => Faker::Internet.password, :image_url => Faker::Internet.url)
+tweets = Tweet.all
+tweets.each {|tweet| tweet.destroy}
+
+friends = Friend.all
+friends.each {|friend| friend.destroy}
+#Create 100 users
+100.times do
+	User.create(
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		user_name: Faker::Internet.user_name,
+		email: Faker::Internet.email,
+		password_hash: Faker::Internet.password,
+		image_url: Faker::Company.logo
+	)
+
+#Create 100 tweets
+	Tweet.create(
+		tweet: Faker::Lorem.characters(120)
+	)
 end
 
-2000.times do
-  Tweet.create(:tweet => Faker::Lorem.characters(10..140), :user_id => rand(1..500))
-end
+User.create(
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		user_name: "bear",
+		email: Faker::Internet.email,
+		password_hash: "123",
+		image_url: Faker::Company.logo
+		)
