@@ -8,6 +8,7 @@ users.each {|user| user.destroy}
 tweets = Tweet.all
 tweets.each {|tweet| tweet.destroy}
 
+
 friends = Friend.all
 friends.each {|friend| friend.destroy}
 #Create 100 users
@@ -17,7 +18,7 @@ friends.each {|friend| friend.destroy}
 		last_name: Faker::Name.last_name,
 		user_name: Faker::Internet.user_name,
 		email: Faker::Internet.email,
-		password_hash: Faker::Internet.password,
+		password_hash: "123",
 		image_url: Faker::Company.logo
 	)
 
@@ -34,7 +35,4 @@ User.create(
 		email: Faker::Internet.email,
 		password_hash: "123",
 		image_url: Faker::Company.logo
-		)
-end
-
-
+			)

@@ -1,2 +1,32 @@
-"On show page"
-<%= @user.user_name %>
+
+ <% @all_users.each do |person| %>
+ 	<a href="/users/<%= person.id %>"><%= person.first_name %></a>
+ <% end %>
+
+<% @followees.each do |followee| %>
+	<p><%= followee.first_name %></p>
+<% end %>
+
+
+
+<h1> <%= @user.first_name %> </h1>
+
+<div class="updates">
+<form action='/users/<%= @user.id %>/tweet' method="post">
+	<textarea name="tweet" rows="4" cools="50"></textarea>
+	<input type="submit" value="New Tweet"></input>
+</form>
+</div>
+
+<div>
+	<ul>
+		<% @tweets.each do |update| %>
+			<li><%= update.tweet %> <br> <%= update.created_at %> </li>
+		<% end %>
+	</ul>
+</div>
+
+
+<a href=''><button>Follow</button></a>
+
+
