@@ -1,3 +1,14 @@
+
+ <% @all_users.each do |person| %>
+ 	<a href="/users/<%= person.id %>"><%= person.first_name %></a>
+ <% end %>
+
+<% @followees.each do |followee| %>
+	<p><%= followee.first_name %></p>
+<% end %>
+
+
+
 <h1> <%= @user.first_name %> </h1>
 
 <div class="updates">
@@ -6,3 +17,16 @@
 	<input type="submit" value="New Tweet"></input>
 </form>
 </div>
+
+<div>
+	<ul>
+		<% @tweets.each do |update| %>
+			<li><%= update.tweet %> <br> <%= update.created_at %> </li>
+		<% end %>
+	</ul>
+</div>
+
+
+
+
+

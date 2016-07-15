@@ -4,7 +4,12 @@ post '/login' do
 end
 
 get '/users/:id' do
+	@all_users = User.all
   @user = User.find_user_by_id(params[:id])
+  # @tweets = @user.tweets.sort{}
+  @followees = @user.followees
+  p @followees
+  @tweets = @user.tweets.order(created_at: :desc) 
   erb :"/users/show"
 end
 
