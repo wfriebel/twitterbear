@@ -1,6 +1,15 @@
+get '/users/new' do
+
+  erb :"/users/new"
+end
+
 post '/login' do
   user_id = User.authenticate(params[:user])
-  redirect "/users/#{user_id}"
+  if user_id
+    redirect "/users/#{user_id}"
+  else
+    redirect '/'
+  end
 end
 
 get '/users/:id' do
@@ -19,4 +28,11 @@ post '/users/:id/tweet' do
   p @tweet.user_id
   redirect "/users/#{@tweet.user_id}"
   p "after redirect"
+end
+
+# created by Will Kat
+post '/users' do
+  user = User.create(params[:user])
+
+  redirect "/users/#{user.id}"
 end

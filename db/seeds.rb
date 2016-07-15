@@ -1,5 +1,6 @@
 require 'faker'
 
+
 #Destroy all existing users and tweets
 users = User.all
 users.each {|user| user.destroy}
@@ -34,4 +35,4 @@ User.create(
 		email: Faker::Internet.email,
 		password_hash: "123",
 		image_url: Faker::Company.logo
-		)
+			)
