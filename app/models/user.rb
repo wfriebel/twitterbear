@@ -20,7 +20,11 @@ class User < ActiveRecord::Base
 
   def self.authenticate(user_info)
     user = User.find_by(user_name: user_info[:user_name])
-    user.id
+    if user.password == user_info[:password]
+      return user.id
+    else
+      return nil
+    end
   end
 
   def self.find_user_by_id(user_id)
